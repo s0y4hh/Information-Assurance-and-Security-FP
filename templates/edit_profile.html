@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+<div class="form-container">
+  <h2>Edit Profile</h2>
+  <form method="POST" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+          {{ form.first_name.label }}
+          {{ form.first_name(class="form-control") }}
+      </div>
+      <div class="form-group">
+          {{ form.last_name.label }}
+          {{ form.last_name(class="form-control") }}
+      </div>
+      <div class="form-group">
+        {{ form.profile_picture.label }}
+        {{ form.profile_picture(class="form-control-file") }}
+        {% if form.profile_picture.errors %}
+            <div class="invalid-feedback d-block">
+                {% for error in form.profile_picture.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+      </div>
+      {{ form.submit(class="btn btn-primary") }}
+  </form>
+</div>
+{% endblock %}

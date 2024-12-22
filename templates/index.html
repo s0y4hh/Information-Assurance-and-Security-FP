@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Welcome, {{ current_user.first_name }}!</h1>
+    <p>This is the home page of the Access Control System.</p>
+    {% if current_user.role == 'admin' %}
+        <p>You have administrator privileges.</p>
+    {% else %}
+        <p>You have regular user privileges.</p>
+    {% endif %}
+</div>
+{% endblock %}
